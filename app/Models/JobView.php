@@ -2,9 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class JobView extends Model
 {
-    //
+    use HasFactory;
+
+    /**
+     * @return BelongsTo
+     */
+    public function jobPost(): BelongsTo
+    {
+        return $this->belongsTo(JobPost::class);
+    }
 }
