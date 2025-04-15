@@ -16,10 +16,9 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             UserSeeder::class,
             CandidateSeeder::class,
-            JobSeeder::class,
+            JobPostSeeder::class,
             ApplicationSeeder::class,
             JobViewSeeder::class,
-            MetafieldSeeder::class,
         ]);
     }
 }

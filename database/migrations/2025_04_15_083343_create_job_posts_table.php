@@ -17,9 +17,8 @@ return new class extends Migration
             $table->foreignId('tenant_id');
             $table->string('uid', 36)->unique();
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('company_name');
-            $table->text('description');
+            $table->string('slug', 250)->unique();
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('view_count')->default(0);
             $table->unsignedBigInteger('application_count')->default(0);
             $table->tinyInteger('status')->default(JobStatusEnum::ACTIVE->value);
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('job_posts');
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->index();
+            $table->foreignId('job_post_id')->index();
             $table->string('uid', 36)->unique();
             $table->string('name')->nullable();
             $table->string('email')->index();
