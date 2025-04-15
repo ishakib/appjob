@@ -45,4 +45,12 @@ class JobPostService
             ->where('tenant_id', $tenantId);
     }
 
+    public function findByUid(Tenant $tenant, string $uid, array $with = []): JobPost|null
+    {
+        return $this->selectCommonColumns(tenantId: $tenant->id)
+            ->where('uid', $uid)
+            ->with($with)
+            ->first();
+    }
+
 }

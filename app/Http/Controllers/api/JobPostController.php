@@ -11,12 +11,16 @@ use Illuminate\Http\Request;
 
 class JobPostController extends Controller
 {
+    /**
+     * @param JobPostService $jobPostService
+     */
     public function __construct(protected JobPostService $jobPostService)
     {
     }
 
+
     /**
-     * Display a listing of the resource.
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -28,15 +32,8 @@ class JobPostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -44,19 +41,18 @@ class JobPostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @param string $uid
+     * @return JsonResponse
      */
-    public function show(JobPost $job)
+    public function show(string $uid): JsonResponse
     {
-        //
-    }
+        $jobPost = $this->jobPostService->findByUid(tenant(),$uid);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(JobPost $job)
-    {
-        //
+        if ($jobPost === null) {
+            return api()->fails(__('response.fail'));
+        }
+
+        return api((new JobPostPresenter($jobPost))())->success(__('response.success'));
     }
 
     /**
