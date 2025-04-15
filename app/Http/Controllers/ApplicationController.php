@@ -7,7 +7,6 @@ use App\Http\Requests\ApplicationUpdateRequest;
 use App\Presenter\ApplicationPresenter;
 use App\Services\ApplicationService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
@@ -94,7 +93,7 @@ class ApplicationController extends Controller
 
             $this->applicationService->update($categoryDTO, $application);
 
-            return api((new ApplicationPresenter($application))())->success(__('customer.update.success'));
+            return api((new ApplicationPresenter($application))())->success(__('application.update.success'));
 
         } catch (\Exception $e) {
             return api()->fails(__('response.fail'));

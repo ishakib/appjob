@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobPost;
 use App\Presenter\JobPostPresenter;
 use App\Services\JobPostService;
 use Illuminate\Http\JsonResponse;
