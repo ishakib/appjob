@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'tenant' => [
+            'driver' => 'session',  // or 'token' if you're using token-based authentication
+            'provider' => 'tenants', // Make sure this matches the provider for tenants
+        ],
     ],
 
     /*
@@ -69,6 +73,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'tenants' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Tenant::class, // Ensure this model exists
+        ],
     ],
 
     /*

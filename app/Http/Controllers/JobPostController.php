@@ -3,16 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobPost;
+use App\Presenter\JobPostPresenter;
+use App\Services\JobPostService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class JobPostController extends Controller
 {
+    public function __construct(protected JobPostService $jobPostService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $jobPosts = $this->jobPostService->all(tenant());
+        return api([
+            'reviews' => (new JobPostPresenter($jobPosts->toArray()['data']))() ?? [],
+            'meta' => pagination_meta($jobPosts)
+        ])->success(__('response.success'));
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\JwtAuthMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,9 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
 
     )
-    ->withMiddleware(function (Middleware $middleware) {
-
+    ->withMiddleware(static function (Middleware $middleware) {
+        $middleware->alias([
+            'jwt.auth' => JwtAuthMiddleware::class
+        ]);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
+    ->withExceptions(static function (Exceptions $exceptions) {
         //
     })->create();
