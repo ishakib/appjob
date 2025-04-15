@@ -22,7 +22,7 @@ class JobPostController extends Controller
     {
         $jobPosts = $this->jobPostService->all(tenant());
         return api([
-            'reviews' => (new JobPostPresenter($jobPosts->toArray()['data']))() ?? [],
+            'jobs' => (new JobPostPresenter($jobPosts->toArray()['data']))() ?? [],
             'meta' => pagination_meta($jobPosts)
         ])->success(__('response.success'));
     }

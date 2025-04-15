@@ -1,7 +1,8 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import 'vue3-easy-data-table/dist/style.css';
+import JobPost from './components/JobPost.vue';
 
 const app = createApp({});
-app.component('hello-world', HelloWorld);
+app.component('job-post', JobPost);
 app.mount('#app');

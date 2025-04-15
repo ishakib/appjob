@@ -10,7 +10,7 @@ class JobPostPresenter extends BasePresenter
             'uid',
             'title',
             'slug',
-            'descrption',
+            'description',
             'view_count',
             'application_count',
             'company_name' => 'tenant.name'

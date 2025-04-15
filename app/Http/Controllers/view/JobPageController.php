@@ -12,5 +12,4 @@ class JobPageController
     {
         return view('jobs'); // no need to pass jobs here
     }
-
 }
