@@ -10,6 +10,13 @@ class Application extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::creating(function ($application) {
+            $application->uid = str_unique();
+        });
+    }
+
     /**
      * @return BelongsTo
      */

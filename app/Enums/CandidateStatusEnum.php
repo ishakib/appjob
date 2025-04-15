@@ -2,11 +2,12 @@
 
 namespace App\Enums;
 
-enum ApplicationStatus: string
+enum CandidateStatusEnum: int
 {
-    case ACTIVE = 'active';
-    case INACTIVE = 'inactive';
-    case BANNED = 'banned';
+    case INACTIVE = 0;
+    case ACTIVE = 1;
+
+    case BANNED = 2;
 
     /**
      * Get all statuses as an array.

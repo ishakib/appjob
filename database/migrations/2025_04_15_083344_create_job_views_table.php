@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\JobViewEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,10 @@ return new class extends Migration
     {
         Schema::create('job_views', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id');
+            $table->string('uid', 36)->unique();
+            $table->foreignId('job_post_id');
             $table->string('ip_address');
+            $table->tinyInteger('status')->default(JobViewEnum::DRAFT->value);
             $table->softDeletes();
             $table->timestamps();
         });

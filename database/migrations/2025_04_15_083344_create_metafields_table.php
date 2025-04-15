@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('metafields', function (Blueprint $table) {
             $table->id();
+            $table->string('uid', 36)->unique();
             $table->morphs('metafieldable');
             $table->string('namespace')->default('global');
             $table->string('key');

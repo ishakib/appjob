@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\TenantStatusEnum;
+use App\Models\Tenant;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TenantSeeder extends Seeder
 {
@@ -12,6 +14,13 @@ class TenantSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Tenant::create([
+            'uid' => (string) Str::uuid(),
+            'name' => 'Default Tenant',
+            'domain' => 'defaulttenant.com',
+            'url' => 'https://defaulttenant.com',
+            'locale' => 'en',
+            'status' => TenantStatusEnum::ACTIVE->value
+        ]);
     }
 }

@@ -10,6 +10,12 @@ class JobView extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::creating(function ($jobView) {
+            $jobView->uid = str_unique();
+        });
+    }
     /**
      * @return BelongsTo
      */

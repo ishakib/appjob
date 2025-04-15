@@ -2,11 +2,12 @@
 
 namespace App\Enums;
 
-enum JobStatus: string
+enum AdminStatusEnum: int
 {
-    case ACTIVE = 'active';
-    case INACTIVE = 'inactive';
-    case DRAFT = 'draft';
+    case INACTIVE = 0;
+    case ACTIVE = 1;
+
+    case BANNED = 2;
 
     /**
      * Get all statuses as an array.

@@ -11,6 +11,12 @@ class JobPost extends Model
 {
     use HasFactory;
 
+    protected static function booted()
+    {
+        static::creating(function ($jobPost) {
+            $jobPost->uid = str_unique();
+        });
+    }
     /**
      * @return BelongsTo
      */
