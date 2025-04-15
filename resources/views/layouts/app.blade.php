@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Job Page</title>
-    @vite('resources/js/app.js')
+    @vite('public/build/build-app2.js')
 </head>
 <body>
 @yield('content')

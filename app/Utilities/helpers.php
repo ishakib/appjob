@@ -5,6 +5,7 @@ use App\Models\Tenant;
 use App\Utilities\ApiJsonResponse;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Pagination\AbstractPaginator;
+use Illuminate\Support\Str;
 
 if (!function_exists('tenant')) {
 
@@ -54,5 +55,51 @@ if (!function_exists('api')) {
     function api(array|Arrayable|string|null $data = []): ApiJsonResponse
     {
         return new ApiJsonResponse($data);
+    }
+}
+
+if (!function_exists('str_unique_with_prefix')) {
+
+    function str_unique_with_prefix($prefix = ''): string
+    {
+        return $prefix . str_unique();
+    }
+}
+
+
+if (!function_exists('str_unique')) {
+    /**
+     * @param int $length
+     * @return string
+     */
+    function str_unique(int $length = 16): string
+    {
+        $side = rand(0, 1); // 0 = left, 1 = right
+        $salt = rand(0, 9);
+        $len = $length - 1;
+        $string = Str::random($len <= 0 ? 7 : $len);
+
+        $separatorPos = (int)ceil($length / 4);
+
+        $string = $side === 0 ? ($salt . $string) : ($string . $salt);
+        $string = substr_replace($string, '-', $separatorPos, 0);
+
+        return substr_replace($string, '-', negative_value($separatorPos), 0);
+    }
+}
+
+if (!function_exists('negative_value')) {
+    /**
+     * @param int|float $value
+     * @param bool $float
+     * @return int|float
+     */
+    function negative_value(int|float $value, bool $float = false): int|float
+    {
+        if ($float) {
+            $value = (float)$value;
+        }
+
+        return 0 - abs($value);
     }
 }

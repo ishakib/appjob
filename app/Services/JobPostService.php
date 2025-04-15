@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Dto\JobpostDTO;
 use App\Enums\JobStatusEnum;
 use App\Models\JobPost;
 use App\Models\Tenant;
 use Illuminate\Pagination\AbstractPaginator;
+use Illuminate\Support\Arr;
 
 class JobPostService
 {
@@ -53,4 +55,54 @@ class JobPostService
             ->first();
     }
 
+    /**
+     * @param Tenant $tenant
+     * @param array $data
+     * @return JobpostDTO
+     */
+    public function prepareDtoCreate(Tenant $tenant, array $data): JobpostDTO
+    {
+        $status = Arr::get($data, 'status') ? JobStatusEnum::ACTIVE->value : JobStatusEnum::INACTIVE->value;
+        return new JobpostDTO(
+            uid: str_unique_with_prefix('jp-'),
+            tenant_id: (int)$tenant->id,
+            status: $status
+        );
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function store($data): mixed
+    {
+        return JobPost::query()->create($data->toArray());
+    }
+
+    /**
+     * @param array $data
+     * @param JobPost $jobPost
+     * @return JobpostDTO
+     */
+    public function prepareDtoUpdate(array $data, JobPost $jobPost): JobpostDTO
+    {
+        $status = Arr::get($data, 'status') ?: $jobPost->satus;
+
+        return new JobpostDTO(
+            uid: $jobPost->uid,
+            tenant_id: $jobPost->tenant_id,
+            status: $status
+        );
+    }
+
+    /**
+     * @param JobpostDTO $data
+     * @param $customer
+     * @return mixed
+     */
+    public function update(JobpostDTO $data, $customer): mixed
+    {
+        $customer->update($data->toArray());
+        return $customer;
+    }
 }

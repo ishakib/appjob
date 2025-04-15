@@ -16,4 +16,13 @@ export default defineConfig({
             'vue': 'vue/dist/vue.esm-bundler.js', // Ensure this alias is set
         },
     },
+    build: {
+        rollupOptions: {
+            output: {
+                entryFileNames: `build-app.js`,
+                chunkFileNames: `build-app.js`,
+                assetFileNames: `build-app.[ext]`,
+            },
+        },
+    },
 });

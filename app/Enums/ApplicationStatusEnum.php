@@ -11,6 +11,7 @@ enum ApplicationStatusEnum: int
     case HIRED = 4;
     case NEGOTIATION = 5;
     case HOLD = 6;
+    case ANY = 7;
 
     /**
      * Get all statuses as an array.

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Candidate;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
-class CandidateController extends Controller
+class TenantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class CandidateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Candidate $candidate)
+    public function show(Tenant $tenant)
     {
         //
     }
@@ -43,7 +42,7 @@ class CandidateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Candidate $candidate)
+    public function edit(Tenant $tenant)
     {
         //
     }
@@ -51,7 +50,7 @@ class CandidateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(Request $request, Tenant $tenant)
     {
         //
     }
@@ -59,7 +58,7 @@ class CandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Candidate $candidate)
+    public function destroy(Tenant $tenant)
     {
         //
     }
