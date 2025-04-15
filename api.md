@@ -1,4 +1,4 @@
-# Laravel Test App API Documentation
+# Laravel Job App API Documentation
 
 ## Base URL
 ```
@@ -7,105 +7,174 @@
 
 ---
 
-## 1. Get Nearest Riders
-### Endpoint:
-```
-GET /riders?restaurant_id={restaurant_id}
-```
+## Job Posts
 
-### Description:
-Retrieve a list of nearest riders to a given restaurant.
-
-### Request Parameters:
-| Parameter     | Type   | Required | Description |
-|--------------|--------|----------|-------------|
-| restaurant_id | int    | Yes      | The ID of the restaurant to find the nearest riders. |
-
-### Example Request:
+### 1. Get all job posts
+**Endpoint:**
 ```
-GET {{base_url}}/riders?restaurant_id=1
+GET /job-posts
+```
+**Example Request:**
+```
+GET {{base_url}}/job-posts
 ```
 
-### Response:
+---
+
+### 2. Get job post details
+**Endpoint:**
+```
+GET /job-posts/{uid}
+```
+**Example Request:**
+```
+GET {{base_url}}/job-posts/{uid}
+```
+
+---
+
+### 3. Create a new job post
+**Endpoint:**
+```
+POST /job-posts
+```
+**Payload:**
 ```json
 {
-    "message": "Nearest riders found",
-    "data": [
-        {
-            "id": 5,
-            "uid": "abc123",
-            "name": "John Doe",
-            "status": 1,
-            "distance": 3.75
-        },
-        {
-            "id": 12,
-            "uid": "xyz456",
-            "name": "Alice Smith",
-            "status": 1,
-            "distance": 4.21
-        }
-    ]
+  "title": "Frontend Developer",
+  "description": "Job description here",
+  "company_name": "Awesome Inc."
 }
 ```
 
 ---
 
-## 2. Update Rider's Location
-### Endpoint:
+### 4. Update a job post
+**Endpoint:**
 ```
-PATCH /riders/{RiderUid}/location/update
+PUT /job-posts/{uid}/update
 ```
-
-### Description:
-Update the location of a rider.
-
-### URL Parameters:
-| Parameter  | Type   | Required | Description |
-|------------|--------|----------|-------------|
-| RiderUid   | string | Yes      | Unique identifier of the rider whose location is being updated. |
-
-### Request Body:
-| Parameter  | Type   | Required | Description |
-|------------|--------|----------|-------------|
-| latitude   | float  | Yes      | Rider's current latitude. |
-| longitude  | float  | Yes      | Rider's current longitude. |
-| accuracy   | float  | No       | Accuracy of the location in meters. |
-| speed      | float  | No       | Rider's current speed in km/h. |
-| direction  | float  | No       | Rider's movement direction in degrees. |
-| timestamp  | string | Yes      | ISO 8601 timestamp of the location update. |
-| status     | int    | Yes      | Rider's status (e.g., 1 for active). |
-
-### Example Request:
+**Payload:**
 ```json
-PATCH {{base_url}}/riders/rdi-ktrj-ZinMyUyc-gzt8/location/update
-Content-Type: application/json
-
 {
-  "latitude": 23.8103,
-  "longitude": 90.4125,
-  "accuracy": 5,
-  "speed": 12.5,
-  "direction": 180,
-  "timestamp": "2025-02-26T14:30:00Z",
-  "status": 1
+  "title": "Updated Job Title",
+  "description": "Updated description"
 }
 ```
 
-### Response:
+---
+
+### 5. Delete a job post
+**Endpoint:**
+```
+DELETE /job-posts/{uid}
+```
+
+---
+
+## Applications
+
+### 6. Get all applications
+```
+GET /applications
+```
+
+### 7. Get application details
+```
+GET /applications/{uid}
+```
+
+### 8. Submit an application
+```
+POST /applications
+```
+**Payload:**
 ```json
 {
-    "message": "Rider location updated successfully",
-    "data": {
-        "rider_id": "rdi-ktrj-ZinMyUyc-gzt8",
-        "latitude": 23.8103,
-        "longitude": 90.4125,
-        "accuracy": 5,
-        "speed": 12.5,
-        "direction": 180,
-        "timestamp": "2025-02-26T14:30:00Z",
-        "status": 1
-    }
+  "candidate_uid": "xyz789",
+  "job_post_uid": "abc123"
 }
+```
+
+### 9. Update application
+```
+PUT /applications/{uid}/update
+```
+
+### 10. Delete application
+```
+DELETE /applications/{uid}
+```
+
+---
+
+## Candidates
+
+### 11. Get all candidates
+```
+GET /candidates
+```
+
+### 12. Get candidate details
+```
+GET /candidates/{uid}
+```
+
+### 13. Create a candidate
+```
+POST /candidates
+```
+**Payload:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+```
+
+### 14. Update candidate
+```
+PUT /candidates/{uid}/update
+```
+
+### 15. Delete candidate
+```
+DELETE /candidates/{uid}
+```
+
+---
+
+## Tenants
+
+### 16. Get all tenants
+```
+GET /tenants
+```
+
+### 17. Get tenant details
+```
+GET /tenants/{uid}
+```
+
+### 18. Create a tenant
+```
+POST /tenants
+```
+**Payload:**
+```json
+{
+  "company_name": "Awesome Inc.",
+  "domain": "awesome.com"
+}
+```
+
+### 19. Update tenant
+```
+PUT /tenants/{uid}/update
+```
+
+### 20. Delete tenant
+```
+DELETE /tenants/{uid}
 ```
 
