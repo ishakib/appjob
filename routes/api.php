@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\JobPostController;
-use App\Http\Controllers\TenantController;
+use App\Http\Controllers\api\ApplicationController;
+use App\Http\Controllers\api\JobPostController;
+use App\Http\Controllers\api\TenantController;
 use Illuminate\Support\Facades\Route;
 
 

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
-use App\Models\Metafield;
+use App\Http\Controllers\Controller;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
-class MetafieldController extends Controller
+class TenantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class MetafieldController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Metafield $metafield)
+    public function show(Tenant $tenant)
     {
         //
     }
@@ -42,7 +43,7 @@ class MetafieldController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Metafield $metafield)
+    public function edit(Tenant $tenant)
     {
         //
     }
@@ -50,7 +51,7 @@ class MetafieldController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Metafield $metafield)
+    public function update(Request $request, Tenant $tenant)
     {
         //
     }
@@ -58,7 +59,7 @@ class MetafieldController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Metafield $metafield)
+    public function destroy(Tenant $tenant)
     {
         //
     }

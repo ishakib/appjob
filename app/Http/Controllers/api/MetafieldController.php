@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
-use App\Models\Candidate;
+use App\Http\Controllers\Controller;
+use App\Models\Metafield;
 use Illuminate\Http\Request;
 
-class CandidateController extends Controller
+class MetafieldController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class CandidateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Candidate $candidate)
+    public function show(Metafield $metafield)
     {
         //
     }
@@ -42,7 +43,7 @@ class CandidateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Candidate $candidate)
+    public function edit(Metafield $metafield)
     {
         //
     }
@@ -50,7 +51,7 @@ class CandidateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(Request $request, Metafield $metafield)
     {
         //
     }
@@ -58,7 +59,7 @@ class CandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Candidate $candidate)
+    public function destroy(Metafield $metafield)
     {
         //
     }

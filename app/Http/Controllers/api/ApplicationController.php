@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
-use App\Models\JobView;
+use App\Http\Controllers\Controller;
+use App\Models\Application;
 use Illuminate\Http\Request;
 
-class JobViewController extends Controller
+class ApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class JobViewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobView $jobView)
+    public function show(Application $application)
     {
         //
     }
@@ -42,7 +43,7 @@ class JobViewController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobView $jobView)
+    public function edit(Application $application)
     {
         //
     }
@@ -50,7 +51,7 @@ class JobViewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobView $jobView)
+    public function update(Request $request, Application $application)
     {
         //
     }
@@ -58,7 +59,7 @@ class JobViewController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobView $jobView)
+    public function destroy(Application $application)
     {
         //
     }
