@@ -25,7 +25,7 @@ class JobPostSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $jobPosts[] = [
                 'tenant_id' => 1,
-                'uid' => Str::uuid()->toString(),
+                'uid' => str_unique_with_prefix('jp-'),
                 'title' => $faker->jobTitle,
                 'slug' => Str::slug($faker->unique()->sentence(3)),
                 'description' => $faker->paragraph(3),

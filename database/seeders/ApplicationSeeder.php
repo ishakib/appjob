@@ -30,7 +30,7 @@ class ApplicationSeeder extends Seeder
             for ($i = 0; $i < 10; $i++) {
                 $applications[] = [
                     'job_post_id' => $jobPost->id,
-                    'uid' => Str::uuid()->toString(),
+                    'uid' => str_unique_with_prefix('ap-'),
                     'name' => $faker->name(),
                     'email' => $faker->unique()->safeEmail(),
                     'status' => ApplicationStatusEnum::PENDING->value,
