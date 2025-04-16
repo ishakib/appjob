@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('uid', 36)->unique();
             $table->string('name')->index();
+            $table->string('email')->unique();
             $table->string('domain')->unique();
             $table->string('url');
             $table->string('locale', 5);

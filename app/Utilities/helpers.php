@@ -103,3 +103,25 @@ if (!function_exists('negative_value')) {
         return 0 - abs($value);
     }
 }
+if (!function_exists('text_replacer')) {
+
+    /**
+     * @param string $text
+     * @param array $data
+     * @return string
+     */
+    function text_replacer(string $text, array $data): string
+    {
+        if (array_is_list($data)) {
+            return $text;
+        }
+
+        $replacer = [];
+
+        foreach ($data as $key => $value) {
+            $replacer['[' . strtolower($key) . ']'] = $value;
+        }
+
+        return strtr($text, $replacer);
+    }
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicationCreateRequest;
 use App\Http\Requests\ApplicationUpdateRequest;
+use App\Jobs\AfterApplicationNotifyJob;
 use App\Presenter\ApplicationPresenter;
 use App\Services\ApplicationService;
 use Illuminate\Http\JsonResponse;
@@ -44,6 +45,8 @@ class ApplicationController extends Controller
             $applicationDTO = $this->applicationService->prepareDtoCreate(tenant(), $request->validated());
 
             $application = $this->applicationService->store($applicationDTO);
+
+            dispatch(new AfterApplicationNotifyJob(tenant()));
 
             DB::commit();
 
